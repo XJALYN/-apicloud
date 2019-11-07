@@ -11,9 +11,9 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --fix --ext .js,.vue src test/unit test/e2e/specs",
-    "build-web": "node build/build.web.js",
-    "build-app": "node build/build.app.js",
-    "app": "cd ./app & http-server -p 8888"
+    "build:web": "node build/build.web.js",
+    "build:app": "node build/build.app.js",
+    "app": "webpack-dev-server --inline --progress --config build/webpack.app.dev.conf.js"
   },
   "dependencies": {
     "vue": "^2.5.2",
@@ -69,6 +69,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vconsole": "^3.3.4",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",

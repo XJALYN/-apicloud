@@ -1,16 +1,14 @@
 <template>
-  <div 
-    class="index" 
-    @click="onPushToMe">我爱你中国</div>
+  <div class="index" @click="onPushToMe">我爱asdfasfd</div>
 </template>
 
 <script>
-var NVTabBar = window.api.require("NVTabBar");
+// var NVTabBar = window.api.require("NVTabBar");
 export default {
   mouted() {},
   methods: {
     onPushToMe() {
-      this.$router({ path: "/index" });
+      this.router.push({ path: "/me" });
     }
   }
 };
@@ -18,6 +16,6 @@ export default {
 
 <style  scoped>
 .index {
-  background: red;
+  background-color: red;
 }
 </style>

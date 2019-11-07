@@ -1,5 +1,5 @@
 <template>
-  <div>我爱你中国</div>
+  <div>sdfssdfsdfdf</div>
 </template>
 
 <script>

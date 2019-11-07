@@ -1,12 +1,22 @@
 import Vue from 'vue'
 import App from './index'
 import router from '../../router/index.app'
-Vue.prototype.$router = router
+import VConsole from 'vconsole'              // 微信官网 手机上调试工具
+// eslint-disable-next-line
+const _console = new VConsole()
+Vue.prototype.router = router
+
 // eslint-disable-next-line no-new
-window.api.apiready = () => {
-    new Vue({
-        el: '#app',
-        components: { App },
-        template: '<App/>'
-    })
-}
+
+new Vue({
+  el: '#app',
+  components: { App },
+  template: '<App/>'
+})
+
+
+
+// window.apiready = function () {
+
+// }
+
