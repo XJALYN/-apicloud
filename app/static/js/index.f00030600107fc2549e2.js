@@ -1,0 +1,2 @@
+webpackJsonp([3],{MhDc:function(e,p,t){"use strict";Object.defineProperty(p,"__esModule",{value:!0});var c=t("xd7I"),a=t("MhDc");new c.a({el:"#app",components:{App:a.default},template:"<App/>"})}},["MhDc"]);
+//# sourceMappingURL=index.f00030600107fc2549e2.js.map

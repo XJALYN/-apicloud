@@ -1,0 +1,2 @@
+webpackJsonp([3], { 'K44+': function (e, t) { }, MhDc: function (e, t, n) { 'use strict'; Object.defineProperty(t, '__esModule', { value: !0 }); var c = n('xd7I'), s = { render: function () { var e = this.$createElement; return (this._self._c || e)('div', { staticClass: 'index' }, [this._v('我爱你中国')]) }, staticRenderFns: [] }; var a = n('C7Lr')({}, s, !1, function (e) { n('K44+') }, 'data-v-8e6146bc', null).exports; new c.a({ el: '#app', components: { App: a }, template: '<App/>' }) } }, ['MhDc'])
+// # sourceMappingURL=index.c752dd8208316f50a3e5.js.map

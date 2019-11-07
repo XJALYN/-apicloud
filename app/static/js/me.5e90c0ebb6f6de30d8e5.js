@@ -1,0 +1,2 @@
+webpackJsonp([2],{KgZn:function(e,p,n){"use strict";Object.defineProperty(p,"__esModule",{value:!0});var t=n("xd7I"),a=n("KgZn");new t.a({el:"#app",components:{App:a.default},template:"<App/>"})}},["KgZn"]);
+//# sourceMappingURL=me.5e90c0ebb6f6de30d8e5.js.map
