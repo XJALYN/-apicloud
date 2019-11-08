@@ -1,5 +1,7 @@
 <template>
-  <div class="index" @click="onPushToMe">我爱asdfasfd</div>
+  <div 
+    class="index" 
+    @click="onPushToMe">我爱asdfasfd</div>
 </template>
 
 <script>
