@@ -1,2 +1,0 @@
-webpackJsonp([2],{SijM:function(e,p,t){"use strict";Object.defineProperty(p,"__esModule",{value:!0});var a=t("xd7I"),n=t("SijM");new a.a({el:"#app",components:{App:n.default},template:"<App/>"})}},["SijM"]);
-//# sourceMappingURL=me.35e6e9a5e7a26cd8088e.js.map

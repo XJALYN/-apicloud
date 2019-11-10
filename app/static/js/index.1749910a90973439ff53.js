@@ -1,2 +1,0 @@
-webpackJsonp([3],{U67u:function(e,p,t){"use strict";Object.defineProperty(p,"__esModule",{value:!0});var u=t("xd7I"),a=t("U67u");new u.a({el:"#app",components:{App:a.default},template:"<App/>"})}},["U67u"]);
-//# sourceMappingURL=index.1749910a90973439ff53.js.map
