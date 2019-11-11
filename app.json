@@ -2,30 +2,30 @@
   "name": "root",
 
   "tabBar": {
-    "color":   "black",
-    "selectedColor":"red",
+    "color":   "#000",
+    "selectedColor":"#f00",
     "frames": [{
       "title": "鲲美会",
       "name": "page1",
-      "url": "widget://html/tabPage/home.html"
+      "url": "widget://html/tabPage/home/home.html"
     }, {
       "title": "发现",
       "name": "page2",
-      "url": "widget://html/tabPage/find.html"
+      "url": "widget://html/tabPage/find/find.html"
     }, {
       "title": "会员",
       "name": "page3",
-      "url": "widget://html/tabPage/member.html"
+      "url": "widget://html/tabPage/member/member.html"
     },
     {
       "title": "购物车",
       "name": "page4",
-      "url": "widget://html/tabPage/shopCart.html"
+      "url": "widget://html/tabPage/shopCart/shopCart.html"
     },
     {
       "title": "我的",
       "name": "page5",
-      "url": "widget://html/tabPage/me.html"
+      "url": "widget://html/tabPage/me/me.html"
     }
   ],
     "list": [{

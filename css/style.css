@@ -30,11 +30,11 @@ body{
   margin: 0;
 }
 
-.header {
+header {
   background-color: #f2f2f2;
 
 }
-.header .title {
+header .title {
     height: 50px;
     line-height: 50px;
     text-align: center;

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
 
     <style>
@@ -105,7 +105,7 @@
         <footer id="footer" class="border-t">
             <ul class="flex-wrap">
                 <div class="li" tapmode @click="randomSwitchBtn(index)" :class="['flex-con',{'active':tabIndex==index}]"
-                    v-for="(item,index) in tabs" :key="index">{{item.name}}</div>
+                    v-for="(item,index) in tabs">{{item.name}}</div>
             </ul>
         </footer>
     </div>
@@ -133,19 +133,19 @@
     apiready = function () {
 
 
-        // api.viewappearapi.addEventListener({
-        //     name: 'viewappear'
-        // }, function (ret, err) {
-        //     alert("ddd")
-        //     if (ret) {
-        //         alert(JSON.stringify(ret));
-        //     } else {
-        //         alert(JSON.stringify(err));
-        //     }
-        // });
+        api.viewappearapi.addEventListener({
+            name: 'viewappear'
+        }, function (ret, err) {
+            alert("ddd")
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
 
-        //
-        //
+
+
         $api.fixStatusBar($api.dom('header'));
         api.setStatusBarStyle({
             style: 'dark',
