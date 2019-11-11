@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
 
     <style>
         header {
@@ -32,9 +34,13 @@
 
         #footer {
             background-color: #f2f2f2;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
-        #footer ul li {
+        #footer ul .li {
             padding-top: 36px;
             padding-bottom: 4px;
             background: url() no-repeat center 2px;
@@ -42,39 +48,39 @@
             text-align: center;
         }
 
-        #footer ul li.active {
+        #footer ul .li.active {
             color: #6ab494;
         }
 
-        #footer ul li:nth-child(1) {
+        #footer ul .li:nth-child(1) {
             background-image: url(./image/bottombtn0101.png);
         }
 
-        #footer ul li:nth-child(2) {
+        #footer ul .li:nth-child(2) {
             background-image: url(./image/bottombtn0201.png);
         }
 
-        #footer ul li:nth-child(3) {
+        #footer ul .li:nth-child(3) {
             background-image: url(./image/bottombtn0301.png);
         }
 
-        #footer ul li:nth-child(4) {
+        #footer ul .li:nth-child(4) {
             background-image: url(./image/bottombtn0401.png);
         }
 
-        #footer ul li:nth-child(1).active {
+        #footer ul .li:nth-child(1).active {
             background-image: url(./image/bottombtn0102.png);
         }
 
-        #footer ul li:nth-child(2).active {
+        #footer ul .li:nth-child(2).active {
             background-image: url(./image/bottombtn0202.png);
         }
 
-        #footer ul li:nth-child(3).active {
+        #footer ul .li:nth-child(3).active {
             background-image: url(./image/bottombtn0302.png);
         }
 
-        #footer ul li:nth-child(4).active {
+        #footer ul .li:nth-child(4).active {
             background-image: url(./image/bottombtn0402.png);
         }
 
@@ -88,10 +94,7 @@
     <div id="app" class="flex-wrap flex-vertical">
         <header>
             <ul>
-                <li class="border-b active">云API1</li>
-                <li class="border-b">端API</li>
-                <li class="border-b">开发</li>
-                <li class="border-b">文档</li>
+                <li v-for="(item,index) in headers" :class="['border-b',{'active':tabIndex==index}]" :style="[{'color':item.color},{'background':item.background}]">{{item.name}}</li>
             </ul>
         </header>
         <div id="main" class="flex-con">
@@ -101,51 +104,56 @@
 
         <footer id="footer" class="border-t">
             <ul class="flex-wrap">
-                <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active">云API</li>
-                <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con">端API</li>
-                <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con">开发</li>
-                <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con">文档</li>
+                <div class="li" tapmode @click="randomSwitchBtn(index)" :class="['flex-con',{'active':tabIndex==index}]"
+                    v-for="(item,index) in tabs">{{item.name}}</div>
             </ul>
         </footer>
     </div>
 </body>
 
 </html>
-<script type="text/javascript" src="script/api.js"></script>
-<script type="text/javascript" src="script/vue.js"></script>
+<script src="./script/api.js" type="text/javascript"></script>
+<script src="./script/vue.js" type="text/javascript"></script>
 <script type="text/javascript">
-   window.onload = function functionName() {
-     const app = new Vue({
-         el: '#app',
-         data: {
-             list: [1, 2, 3, 4]
-         }
-     });
-   }
+    const app = new Vue({
+        el: '#app',
+        data: {
+            headers: [
+                { name: "鲲美会", color: "black", background: "#f2f2f2" },
+                { name: "发现", color: "black", background: "#f2f2f2" },
+                { name: "会员", color: "black", background: "#f2f2f2" },
+                { name: "购物车", color: "black", background: "#f2f2f2" },
+                { name: "我的", color: "white", background: "black"}],
+            tabs: [{ name: "主页" }, { name: "发现" }, { name: "会员" }, { name: "购物车" }, { name: "我的" }],
+            tabIndex: 0
+        }
+    });
+
 
     apiready = function () {
 
 
-        api.viewappearapi.addEventListener({
-            name: 'viewappear'
-        }, function (ret, err) {
-            alert("ddd")
-            if (ret) {
-                alert(JSON.stringify(ret));
-            } else {
-                alert(JSON.stringify(err));
-            }
-        });
+        // api.viewappearapi.addEventListener({
+        //     name: 'viewappear'
+        // }, function (ret, err) {
+        //     alert("ddd")
+        //     if (ret) {
+        //         alert(JSON.stringify(ret));
+        //     } else {
+        //         alert(JSON.stringify(err));
+        //     }
+        // });
 
-
-
+        //
+        //
         $api.fixStatusBar($api.dom('header'));
         api.setStatusBarStyle({
             style: 'dark',
             color: '#6ab494'
         });
         funIniGroup();
-    }
+    };
+
 
     function funIniGroup() {
         var eHeaderLis = $api.domAll('header li'),
@@ -165,34 +173,37 @@
                 x: 0,
                 y: $api.dom('header').offsetHeight,
                 w: api.winWidth,
-                h: $api.dom('#main').offsetHeight
+                h: api.winHeight - $api.dom('header').offsetHeight - $api.dom('footer').offsetHeight
             },
-            index: 0,
+            index: app.tabIndex,
             frames: frames
         }, function (ret, err) {
 
         });
-    }
+
+    };
 
     // 随意切换按钮
-    function randomSwitchBtn(tag) {
-        if (tag == $api.dom('#footer li.active')) return;
-        var eFootLis = $api.domAll('#footer li'),
-            eHeaderLis = $api.domAll('header li'),
-            index = 0;
-        for (var i = 0, len = eFootLis.length; i < len; i++) {
-            if (tag == eFootLis[i]) {
-                index = i;
-            } else {
-                $api.removeCls(eFootLis[i], 'active');
-                $api.removeCls(eHeaderLis[i], 'active');
-            }
-        }
-        $api.addCls(eFootLis[index], 'active');
-        $api.addCls(eHeaderLis[index], 'active');
+    function randomSwitchBtn(index) {
+        app.tabIndex = index
         api.setFrameGroupIndex({
             name: 'group',
-            index: index
+            index: index,
+            scroll: false
         });
+        if(index==4){
+          api.setStatusBarStyle({
+              style: 'white',
+              color: 'black'
+          });
+        }else{
+          api.setStatusBarStyle({
+              style: 'dark',
+              color: '#6ab494'
+          });
+        }
+
     }
+
+
 </script>

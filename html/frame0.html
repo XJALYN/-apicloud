@@ -15,3 +15,31 @@
     <div class="empty">云API</div>
 </body>
 </html>
+<script >
+apiready= function() {
+  api.setRefreshHeaderInfo({
+          //  loadingImg: 'widget://image/loading_more.gif',
+           bgColor: '#f0f0f0',
+           image: {
+               icon: 'widget://image/loading_more.gif',
+               borderColor: '#888'
+           },
+           textColor: '#888',
+           textDown: '下拉刷新...',
+           textUp: '松开刷新...',
+           showTime: false
+       }, function() {
+           // alert('下拉刷新事件触发了，摇动手机关闭下拉状态');
+           // api.addEventListener({
+           //     name: 'shake'
+           // }, function(ret, err) {
+           //     api.refreshHeaderLoadDone()
+           // });
+           setTimeout(function() {
+               api.refreshHeaderLoadDone()
+           }, 3000)
+       });
+}
+
+
+</script>

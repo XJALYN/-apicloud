@@ -1,9 +1,20 @@
-html,body {  font-size:14px; height:100%;  }
+html,body {  font-size:14px; height:100%;}
+
 .hover{ opacity: .8; }
 
 .flex-wrap{ display: -webkit-box;	display: -webkit-flex;	display: flex; }
 .flex-con{     -webkit-box-flex: 1;     -webkit-flex: 1;    flex: 1;}
 .flex-vertical{ -webkit-box-orient: vertical;-webkit-flex-flow: column;flex-flow: column;}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.flex-row-middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 .border-t,
 .border-b{ position:relative;  }
@@ -12,3 +23,21 @@ html,body {  font-size:14px; height:100%;  }
 .border-b:after{ top:auto; bottom:0;  }
 
 #wrap{ height: 100%; }
+
+body{
+  background:#fefefe;
+  padding: 0px;
+  margin: 0;
+}
+
+.header {
+  background-color: #f2f2f2;
+
+}
+.header .title {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #323237;
+    font-size: 18px;
+}
