@@ -34,8 +34,12 @@ const app = new Vue({
 });
 
 apiready = function () {
-
-  $api.fixStatusBar($api.dom('.header'));
+  var systemType = api.systemType;  // 比如： ios
+  if(systemType == "ios"){
+    $api.fixStatusBar($api.dom('.header'));
+  }
+  
+  // $api.fixStatusBar($api.dom('.header'));
   api.setStatusBarStyle({
       style: 'dark',
       color: '#f2f2f2'

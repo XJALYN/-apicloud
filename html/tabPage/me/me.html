@@ -35,9 +35,13 @@ const app = new Vue({
 apiready = function () {
   api.parseTapmode(); //解析元素 tapmode 属性，优化点击事件处理
 
+  var systemType = api.systemType;  // 比如： ios
+  if(systemType == "ios"){
+    $api.fixStatusBar($api.dom('.header'));
+  }
   // 设置导航
   var header = $api.dom('.header');
-  $api.fixStatusBar(header);
+  // $api.fixStatusBar(header);
   api.setStatusBarStyle({ //设置导航样式
       style: 'dark',
       color: '#f2f2f2'
@@ -46,17 +50,17 @@ apiready = function () {
 // 设置frame的位置
   var headerPos = $api.offset(header); //定义导航栏的高度
   var body_h = $api.offset($api.dom('body')).h;
-  api.openFrame({
-      name: 'my_frame',
-      url: './pages/my_frame.html',
-      bounces: true,
-      rect: {
-          x: 0,
-          y: headerPos.h,
-          w: 'auto',
-          h: 0
-      }
-  })
+  // api.openFrame({
+  //     name: 'my_frame',
+  //     url: './pages/my_frame.html',
+  //     bounces: true,
+  //     rect: {
+  //         x: 0,
+  //         y: headerPos.h,
+  //         w: 'auto',
+  //         h: 0
+  //     }
+  // })
 }
 
 

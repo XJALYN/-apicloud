@@ -1,6 +1,6 @@
 {
   "name": "root",
-
+  "scrollEnabled":false,
   "tabBar": {
     "color":   "#000",
     "selectedColor":"#f00",
