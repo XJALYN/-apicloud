@@ -2,8 +2,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <!-- <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" /> -->
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>底部导航</title>
     <link rel="stylesheet" type="text/css" href="../../../css/api.css" />
@@ -11,8 +11,11 @@
 
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     <style>
-      .title{
+      #app{
+        width: 7.5rem;
+        height: 2rem;
         background-color: red;
+        color: #fff;
       }
     </style>
 </header>
@@ -21,7 +24,7 @@
       <div class="title">鲲美会123</div>
   </header>
   <div id="app">
-
+    我是主页！
   </div>
 </body>
 
@@ -30,6 +33,7 @@
 
 <script src="../../../script/vue.js" ></script>
 <script src="../../../script/api.js"></script>
+<script src="../../../script/flexible.js"></script>
 
 <script type="text/javascript">
 const app = new Vue({
@@ -39,12 +43,11 @@ const app = new Vue({
 });
 
 apiready = function () {
-
-  $api.fixStatusBar($api.dom('header'));
-  // api.setStatusBarStyle({
-  //     style: 'dark',
-  //     color: '#f2f2f2'
-  // });
+  $api.fixStatusBar($api.dom('.header'));
+  api.setStatusBarStyle({
+      style: 'dark',
+      color: '#f2f2f2'
+  });
 
 
 }

@@ -2,24 +2,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <!-- <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" /> -->
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>底部导航</title>
     <link rel="stylesheet" type="text/css" href="../../../css/api.css" />
     <link rel="stylesheet" type="text/css" href="../../../css/style.css" />
     <style>
-    header .title {
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        color: #323237;
-        font-size: 18px;
-    }
+
     </style>
 </header>
-<body class="body">
-  <header class="flex-row-middle">
+<body>
+  <header class="header">
       <div class="title">购物车</div>
   </header>
   <div id="app">
@@ -28,10 +22,9 @@
 </body>
 
 </html>
-<!-- <script src="widget://script/vue.js" type="text/javascript"></script>
-<script src="widget://script/api.js" type="text/javascript"></script> -->
-<script src="../../../script/vue.js" type="text/javascript"></script>
-<script src="../../../script/api.js" type="text/javascript"></script>
+<script src="../../../script/vue.js"></script>
+<script src="../../../script/api.js"></script>
+<script src="../../../script/flexible.js"></script>
 
 <script type="text/javascript">
 const app = new Vue({
@@ -42,7 +35,7 @@ const app = new Vue({
 
 apiready = function () {
 
-  $api.fixStatusBar($api.dom('header'));
+  $api.fixStatusBar($api.dom('.header'));
   api.setStatusBarStyle({
       style: 'dark',
       color: '#f2f2f2'
