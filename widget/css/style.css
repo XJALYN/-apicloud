@@ -25,19 +25,22 @@ html,body {  font-size:14px; height:100%;}
 #wrap{ height: 100%; }
 
 body{
-  background:#fefefe;
+  background:#f7f7f7;
   padding: 0px;
   margin: 0;
 }
 
-.header {
-  background-color: #f2f2f2;
+header {
+  background-color: #fff;
+  height: 1rem ;
+  line-height: 1rem;
+  font-size: 0.34rem;
+  font-weight: bold;
 }
-.header .title {
+.title {
     height: 1rem;
     line-height: 1rem;
     text-align: center;
-    color: #323237;
-    font-size: 18px;
-    background-color: lightblue;
+    color: #333;
+    font-size: 0.34rem;
 }

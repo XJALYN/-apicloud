@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport"
+    <meta name="viewport"
         content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no"> -->
-    <title>底部导航</title>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
@@ -14,99 +14,54 @@
 
 
     <style>
-        header {
-            background-color: #f2f2f2;
-        }
+     #footer{
+       position: absolute;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       width: 100%;
+       height: 1.10rem;
+       display: flex;
+       align-items: center;
+       border-top:0.02rem solid #f7f7f7;
+       background-color: white;
+     }
+     #footer .li{
+       flex:1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+     }
+     .li__icon{
+       width: 0.34rem;
+       height: 0.34rem;
+     }
+     .li__title{
+       font-size: 0.24rem;
+     }
 
-        header ul li {
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            display: none;
-            color: #323237;
-            position: relative;
-            font-size: 18px;
-        }
-
-        header ul li.active {
-            display: block;
-        }
-
-        #footer {
-            background-color: #f2f2f2;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        #footer ul .li {
-            padding-top: 36px;
-            padding-bottom: 4px;
-            background: url() no-repeat center 2px;
-            background-size: auto 30px;
-            text-align: center;
-        }
-
-        #footer ul .li.active {
-            color: #6ab494;
-        }
-
-        #footer ul .li:nth-child(1) {
-            background-image: url(./image/bottombtn0101.png);
-        }
-
-        #footer ul .li:nth-child(2) {
-            background-image: url(./image/bottombtn0201.png);
-        }
-
-        #footer ul .li:nth-child(3) {
-            background-image: url(./image/bottombtn0301.png);
-        }
-
-        #footer ul .li:nth-child(4) {
-            background-image: url(./image/bottombtn0401.png);
-        }
-
-        #footer ul .li:nth-child(1).active {
-            background-image: url(./image/bottombtn0102.png);
-        }
-
-        #footer ul .li:nth-child(2).active {
-            background-image: url(./image/bottombtn0202.png);
-        }
-
-        #footer ul .li:nth-child(3).active {
-            background-image: url(./image/bottombtn0302.png);
-        }
-
-        #footer ul .li:nth-child(4).active {
-            background-image: url(./image/bottombtn0402.png);
-        }
-
-        .flex-con {
-            overflow: auto
-        }
     </style>
 </head>
 
 <body>
-    <div id="app" class="flex-wrap flex-vertical">
-        <header>
-            <ul>
-                <li v-for="(item,index) in headers" :class="['border-b',{'active':tabIndex==index}]" :style="[{'color':item.color},{'background':item.background}]">{{item.name}}</li>
-            </ul>
+    <div id="app">
+        <header class="header">
+          <div class="title">
+            {{tabbar.frames[tabIndex].title}}
+          </div>
         </header>
-        <div id="main" class="flex-con">
+        <footer id="footer">
+                <div class="li" @click="app.randomSwitchBtn(index)" :style="{'color':tabIndex!=index?tabbar.color:tabbar.selectedColor}"
+                    v-for="(item,index) in tabbar.list">
+<img class="li__icon" :src="item.iconPath" v-if="tabIndex != index" />
+<img class="li__icon" :src="item.selectedIconPath" v-else/>
+                    <div class="li__title">
+                      {{item.name}}
+                    </div>
+                  </div>
 
-        </div>
-
-
-        <footer id="footer" class="border-t">
-            <ul class="flex-wrap">
-                <div class="li" tapmode @click="randomSwitchBtn(index)" :class="['flex-con',{'active':tabIndex==index}]"
-                    v-for="(item,index) in tabs">{{item.name}}</div>
-            </ul>
         </footer>
     </div>
 </body>
@@ -114,95 +69,153 @@
 </html>
 <script src="./script/api.js" type="text/javascript"></script>
 <script src="./script/vue.js" type="text/javascript"></script>
+ <script src="./script/flexible.js"></script>
+<script src="./script/fastclick.js"></script>
+<script src="./tools/pushGeTui.js"></script>
 <script type="text/javascript">
+
     const app = new Vue({
         el: '#app',
         data: {
-            headers: [
-                { name: "鲲美会", color: "black", background: "#f2f2f2" },
-                { name: "发现", color: "black", background: "#f2f2f2" },
-                { name: "会员", color: "black", background: "#f2f2f2" },
-                { name: "购物车", color: "black", background: "#f2f2f2" },
-                { name: "我的", color: "white", background: "black"}],
-            tabs: [{ name: "主页" }, { name: "发现" }, { name: "会员" }, { name: "购物车" }, { name: "我的" }],
+            tabbar:{
+              "scrollEnabled":false,
+              "color":   "#000",
+              "selectedColor":"#f00",
+              "frames": [{
+                "bounces":true,
+                "title": "鲲美会",
+                "name": "page1",
+                "url": "./html/home/index.html"
+              }, {
+                "bounces":true,
+                "title": "发现",
+                "name": "page2",
+                "url": "./html/find/index.html"
+              }, {
+                "bounces":true,
+                "title": "会员",
+                "name": "page3",
+                "url": "./html/member/index.html"
+              },
+              {
+                "bounces":true,
+                "title": "购物车",
+                "name": "page4",
+                "url": "./html/shopCart/index.html"
+              },
+              {
+                "bounces":true,
+                "title": "我的",
+                "name": "page5",
+                "url": "./html/me/index.html"
+              }
+            ],
+              "list": [{
+                "name": "主页",
+                "iconPath": "./image/home.png",
+                "selectedIconPath": "./image/home_press.png"
+              }, {
+                "name": "发现",
+                "iconPath": "./image/find.png",
+                "selectedIconPath": "./image/find_press.png"
+              }, {
+                "name": "会员",
+                "iconPath": "./image/member.png",
+                "selectedIconPath": "./image/member_press.png"
+              },
+              {
+                "name": "购物车",
+                "iconPath": "./image/shopcar.png",
+                "selectedIconPath": "./image/shopcar_press.png"
+              },
+              {
+                "name": "我的",
+                "iconPath": "./image/me.png",
+                "selectedIconPath": "./image/me_press.png"
+              }
+            ]
+            },
             tabIndex: 0
+        },
+        created(){
+
+
+        },
+        methods:{
+          randomSwitchBtn(index){
+            this.tabIndex = index
+            api.setFrameGroupIndex({
+                name: 'tabbar',
+                index: index,
+                scroll: false
+            });
+
+
+
+          }
         }
     });
 
 
+
+
+
     apiready = function () {
-
-        api.viewappearapi.addEventListener({
-            name: 'viewappear'
-        }, function (ret, err) {
-            alert("ddd")
-            if (ret) {
-                alert(JSON.stringify(ret));
-            } else {
-                alert(JSON.stringify(err));
-            }
-        });
+      $api.fixStatusBar($api.dom('header'));
+      let headerHeight = $api.dom('header').offsetHeight
+      let footerHeight = $api.dom('footer').offsetHeight
 
 
 
-        $api.fixStatusBar($api.dom('header'));
-        api.setStatusBarStyle({
-            style: 'dark',
-            color: '#6ab494'
-        });
-        funIniGroup();
+
+      //$api.setStorage('footerHeight',footerHeight);
+         // 初始化推送服务
+        //  initGetTui()
+         let token = window.api.getPrefs({
+             sync: true,
+             key: 'token'
+         })
+        //  if(!token){
+        //    api.openWin({
+        //        name: 'login',
+        //        url: './html/login/login.html',
+        //        slidBackEnabled:false,
+        //        animation:{
+        //         type:"movein",                //动画类型（详见动画类型常量）
+        //         subType:'from_bottom',       //动画子类型（详见动画子类型常量）
+        //         duration:300                //动画过渡时间，默认300毫秒
+        //      },
+        //        pageParam: {
+        //            name: 'test'
+        //        }
+        //    });
+        //    return
+        //  }
+         api.openFrameGroup ({
+             name: 'tabbar',
+             background: '#fff',
+             scrollEnabled: false,
+             rect: {
+
+                  x: 0,
+                  y:headerHeight,
+                  w: 'auto',
+                  h: api.winHeight - footerHeight - headerHeight
+             },
+             index: 0,
+             frames: app.tabbar.frames
+         }, function(ret, err){
+             if( ret ){
+               api.setStatusBarStyle({
+                   style: 'dark',
+                   color: '#fff'
+               });
+                  //alert( JSON.stringify( ret ) );
+             }else{
+                  alert( JSON.stringify( err ) );
+             }
+         });
+
     };
-
-
-    function funIniGroup() {
-        var eHeaderLis = $api.domAll('header li'),
-            frames = [];
-        for (var i = 0, len = eHeaderLis.length; i < len; i++) {
-            frames.push({
-                name: 'frame' + i,
-                url: './html/frame' + i + '.html',
-                bgColor: 'rgba(0,0,0,.2)',
-                bounces: true
-            })
-        }
-        api.openFrameGroup({
-            name: 'group',
-            scrollEnabled: false,
-            rect: {
-                x: 0,
-                y: $api.dom('header').offsetHeight,
-                w: api.winWidth,
-                h: api.winHeight - $api.dom('header').offsetHeight - $api.dom('footer').offsetHeight
-            },
-            index: app.tabIndex,
-            frames: frames
-        }, function (ret, err) {
-
-        });
-
-    };
-
-    // 随意切换按钮
-    function randomSwitchBtn(index) {
-        app.tabIndex = index
-        api.setFrameGroupIndex({
-            name: 'group',
-            index: index,
-            scroll: false
-        });
-        if(index==4){
-          api.setStatusBarStyle({
-              style: 'white',
-              color: 'black'
-          });
-        }else{
-          api.setStatusBarStyle({
-              style: 'dark',
-              color: '#6ab494'
-          });
-        }
-
-    }
-
 
 </script>

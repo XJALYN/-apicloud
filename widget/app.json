@@ -1,31 +1,37 @@
 {
   "name": "root",
-  "scrollEnabled":false,
   "tabBar": {
+    "bounces":true,
+    "scrollEnabled":false,
     "color":   "#000",
     "selectedColor":"#f00",
     "frames": [{
+      "bounces":true,
       "title": "鲲美会",
       "name": "page1",
-      "url": "widget://html/tabPage/home/home.html"
+      "url": "widget://html/home/index.html"
     }, {
+      "bounces":true,
       "title": "发现",
       "name": "page2",
-      "url": "widget://html/tabPage/find/find.html"
+      "url": "widget://html/find/index.html"
     }, {
+      "bounces":true,
       "title": "会员",
       "name": "page3",
-      "url": "widget://html/tabPage/member/member.html"
+      "url": "widget://html/member/index.html"
     },
     {
+      "bounces":true,
       "title": "购物车",
       "name": "page4",
-      "url": "widget://html/tabPage/shopCart/shopCart.html"
+      "url": "widget://html/shopCart/index.html"
     },
     {
+      "bounces":true,
       "title": "我的",
       "name": "page5",
-      "url": "widget://html/tabPage/me/me.html"
+      "url": "widget://html/me/index.html"
     }
   ],
     "list": [{

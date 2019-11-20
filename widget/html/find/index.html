@@ -6,18 +6,15 @@
         content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" /> -->
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>底部导航</title>
-    <link rel="stylesheet" type="text/css" href="../../../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
     <style>
 
     </style>
-</header>
+</head>
 <body>
-  <header class="header">
-      <div class="title">发现</div>
-  </header>
   <div id="app">
 
   </div>
@@ -26,9 +23,9 @@
 </html>
 
 
-<script src="../../../script/vue.js" ></script>
-<script src="../../../script/api.js"></script>
-<script src="../../../script/flexible.js"></script>
+<script src="../../script/vue.js" ></script>
+<script src="../../script/api.js"></script>
+<script src="../../script/flexible.js"></script>
 
 <script type="text/javascript">
 const app = new Vue({
@@ -40,13 +37,13 @@ const app = new Vue({
 apiready = function () {
   // $api.fixStatusBar($api.dom('.header'));
   var systemType = api.systemType;  // 比如： ios
-  if(systemType == "ios"){
-    $api.fixStatusBar($api.dom('.header'));
-  }
-  api.setStatusBarStyle({
-      style: 'dark',
-      color: '#f2f2f2'
-  });
+  // if(systemType == "ios"){
+  //   $api.fixStatusBar($api.dom('.header'));
+  // }
+  // api.setStatusBarStyle({
+  //     style: 'dark',
+  //     color: '#f2f2f2'
+  // });
 
 
 }
